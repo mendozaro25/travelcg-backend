@@ -1,0 +1,271 @@
+<?php
+session_start();
+error_reporting(0);
+$varsesion = $_SESSION['admin'];
+$varsesionEmpleado = $_SESSION['empleado']; 
+
+if($varsesion == null || $varsesion = '' || $varsesionEmpleado){
+	?>
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>App Travel Cg | Editar Servicio</title>
+		<!-- Site favicon -->
+		<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/logo-travelcg.png" >
+		<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/logo-travelcg.png" >
+		<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/logo-travelcg.png" >
+		<!-- Mobile Specific Metas -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+		<!-- Google Font -->
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+		<!-- CSS -->
+		<link rel="stylesheet" type="text/css" href="/vendors/styles/core.css">
+		<link rel="stylesheet" type="text/css" href="/vendors/styles/icon-font.min.css">
+		<link rel="stylesheet" type="text/css" href="/src/plugins/datatables/css/dataTables.bootstrap4.min.css">
+		<link rel="stylesheet" type="text/css" href="/src/plugins/datatables/css/responsive.bootstrap4.min.css">
+		<link rel="stylesheet" type="text/css" href="/vendors/styles/style.css">
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-119386393-1');
+		</script>
+	</head>
+	<body>
+	<div class="error-page d-flex align-items-center flex-wrap justify-content-center pd-20">
+		<div class="pd-10">
+			<div class="error-page-wrap text-center">
+				<h1>505</h1>
+				<h3>Error: 505 NO TIENES AUTORIZACIÓN !</h3>
+				<p>Usted no tiene autorización de ingreso a este sitio <br> 
+				¡Comuniquese con algún encargado o puede logearse nuevamente!</p>
+				<div class="pt-20 mx-auto max-width-200">
+					<a href="/index.php" class="btn btn-primary btn-block btn-lg">Volver a Inicio</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- js -->
+	<script src="/vendors/scripts/core.js"></script>
+	<script src="/vendors/scripts/script.min.js"></script>
+	<script src="/vendors/scripts/process.js"></script>
+	<script src="/vendors/scripts/layout-settings.js"></script>
+	</body>
+	</html>
+	<?php
+	die();
+}
+?>
+
+<?php
+    //ABRIMOS CONEXIÓN
+	include("../conexion.php");
+
+    //MOSTRAMOS LISTA
+
+        $id=$_GET['id'];
+        $sql="SELECT * FROM tbServicios WHERE idServicio = '$id'";
+        $datos=mysqli_query($con,$sql) or die ('Error en el query database');
+
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Basic Page Info -->
+	<meta charset="utf-8">
+	<title>App Travel Cg | Editar Servicio</title>
+
+	<!-- Site favicon -->
+	<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/logo-travelcg.png" >
+	<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/logo-travelcg.png" >
+	<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/logo-travelcg.png" >
+
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- Google Font -->
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="../vendors/styles/core.css">
+	<link rel="stylesheet" type="text/css" href="../vendors/styles/icon-font.min.css">
+	<link rel="stylesheet" type="text/css" href="../src/plugins/datatables/css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" type="text/css" href="../src/plugins/datatables/css/responsive.bootstrap4.min.css">
+	<link rel="stylesheet" type="text/css" href="../vendors/styles/style.css">
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-119386393-1');
+	</script>
+</head>
+<body>
+
+	<div class="header">
+		<div class="header-left">
+		</div>
+		<div class="header-right">
+			<div class="user-info-dropdown">
+				<div class="dropdown">
+					<a class="dropdown-toggle" href="index.php" role="button" data-toggle="dropdown">
+						<span class="user-icon">
+							<img src="/assets/img/admin-travel.png" alt="logo">
+						</span>
+						<span class="user-name"><?php echo $_SESSION['usuario'] ?></span>
+					</a>
+					<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+					<a class="dropdown-item" href="../cerrar_sesion.php"><i class="dw dw-logout"></i>Salir</a>				
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="left-side-bar">
+		<div class="brand-logo">
+			<a href="index.php">
+				App Travel Cg
+			</a>
+			<div class="close-sidebar" data-toggle="left-sidebar-close">
+				<i class="ion-close-round"></i>
+			</div>
+		</div>
+		<div class="menu-block customscroll">
+			<div class="sidebar-menu">
+				<ul id="accordion-menu">
+					<li class="dropdown">
+						<a href="../index.php" class="dropdown-toggle no-arrow">
+							<span class="micon dw dw-house-1"></span><span class="mtext">Inicio</span>
+						</a>
+					</li>
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle">
+							<span class="micon dw dw-copy"></span><span class="mtext">Registrar</span>
+						</a>
+						<ul class="submenu">
+							<li><a href="../registros/nuevo-usuario.php">Registrar Nuevo Sitio</a></li>
+							<li><a href="../registros/nuevo-servicio.php">Registrar Nuevo Servicio</a></li>
+							<li><a href="#">Registrar Nuevo ...</a></li>
+						</ul>
+					</li>
+                    <li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle">
+							<span class="micon dw dw-list3"></span><span class="mtext">Listas</span>
+						</a>
+						<ul class="submenu">
+                            <li><a href="../listas/lista-sitios.php">Lista de Sitios</a></li>
+							<li><a href="../listas/lista-servicios.php">Lista de Servicios</a></li>
+							<li><a href="#">Lista de ...</a></li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle">
+							<span class="micon dw dw-library"></span><span class="mtext">Reportes</span>
+						</a>
+						<ul class="submenu">
+                            <li><a href="../reportes/reportes-avances.php">Reportes Sitios</a></li>
+                            <li><a href="../reportes/reportes-servicios.php">Reportes Servicios</a></li>
+                            <li><a href="#">Reportes ...</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="mobile-menu-overlay"></div>
+
+	<div class="main-container">
+    <div class="col-md-6 col-sm-12">
+            <div class="title">
+                <h4>Listas</h4>
+            </div>
+            <nav aria-label="breadcrumb" role="navigation">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a>Lista Servicios</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Editar Servicio</li>
+				</ol>
+			</nav>
+	    </div>
+		<form action="../acciones/modificarServicio.php" method="post">
+        <?php  while ($row = $datos->fetch_assoc()) {?>
+        <div class="form-group row">
+			<div class="col-sm-12 col-md-1">
+				<label class="col-sm-12" style="font-size: 15px; font-weight: 600; font-family: system-ui;">Código</label>
+				<input class="form-control" readonly="readonly" name="id" type="text" value="<?php echo $row['idServicio']; ?>">
+			</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-sm-12 col-md-6">
+					<label class="col-sm-12" style="font-size: 15px; font-weight: 600; font-family: system-ui;">Nombre</label>
+					<input class="form-control" name="nombre" type="text" value="<?php echo $row['nomServicio']; ?>">
+				</div>
+				
+				<div class="col-sm-12 col-md-6">
+					<label class="col-sm-12" style="font-size: 15px; font-weight: 600; font-family: system-ui;">Ubicación</label>
+					<input class="form-control" name="ubicacion" type="text" value="<?php echo $row['ubiServicio']; ?>">
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-sm-12 col-md-6">
+					<label class="col-sm-12" style="font-size: 15px; font-weight: 600; font-family: system-ui;">Imagen</label>
+					<input class="form-control" name="imagen" type="text" value="<?php echo $row['urlServicio']; ?>">
+				</div>
+				<div class="col-sm-12 col-md-6">
+					<label class="col-sm-12" style="font-size: 15px; font-weight: 600; font-family: system-ui;">Categoria</label>
+					<select class="custom-select col-12" name="categoria">
+						<option selected hidden value="<?php echo $row['categoriaServicio']; ?>"><?php echo $row['categoriaServicio'] ?> </option>
+						<option value="Entretenimiento">Entretenimiento</option>
+						<option value="Hotel">Hotel</option>
+						<option value="Restaurante">Restaurante</option>
+						<option value="Compra">Compra</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-sm-12 col-md-12">
+					<label class="col-sm-12" style="font-size: 15px; font-weight: 600; font-family: system-ui;">Descripción</label>
+					<input class="form-control" name="descripcion" type="text" value="<?php echo $row['desServicio']; ?>">
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-sm-12 col-md-3">
+					<label class="col-sm-12" style="font-size: 15px; font-weight: 600; font-family: system-ui;">Estado</label>
+					<select class="custom-select col-12" name="estado">
+						<option selected hidden><?php echo $row['estadoServicio'] ?> </option>
+						<option value="1">Activo</option>
+						<option value="0">Inactivo</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group row">
+			</div>
+            <?php }?>
+			<button type="submit" class="btn btn-primary" data-dismiss="modal">Modificar</button>
+            <a href="../listas/lista-servicios.php" class="btn btn-dark">Cancelar</a>
+		</form>
+	</div>
+
+	<!-- js -->
+	<script src="../vendors/scripts/core.js"></script>
+	<script src="../vendors/scripts/script.min.js"></script>
+	<script src="../vendors/scripts/process.js"></script>
+	<script src="../vendors/scripts/layout-settings.js"></script>
+	<script src="../src/plugins/apexcharts/apexcharts.min.js"></script>
+	<script src="../src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+	<script src="../src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+	<script src="../src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+	<script src="../src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+	<script src="../vendors/scripts/dashboard.js"></script>
+</body>
+</html>
