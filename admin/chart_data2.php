@@ -22,7 +22,10 @@ if ($conn->connect_error) {
 }
 
 //the SQL query to be executed
-$query = "SELECT categoriaServicio as categorias, COUNT(*) as cantidad FROM tbServicios  WHERE estadoServicio = 1 GROUP BY categoriaServicio;";
+$query = "SELECT count(*) as sitios, ubiSitio as ubicaciones
+        FROM tbSitios 
+        WHERE estadoSitio = 1
+        GROUP BY ubiSitio";
 
 //storing the result of the executed query
 $result = $conn->query($query);
@@ -35,8 +38,8 @@ if ($result->num_rows > 0) {
   //Converting the results into an associative array
   while($row = $result->fetch_assoc()) {
     $jsonArrayItem = array();
-    $jsonArrayItem['label'] = $row['categorias'];
-    $jsonArrayItem['value'] = $row['cantidad'];
+    $jsonArrayItem['label'] = $row['ubicaciones'];
+    $jsonArrayItem['value'] = $row['sitios'];
     //append the above created object into the main array.
     array_push($jsonArray, $jsonArrayItem);
   }

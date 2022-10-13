@@ -6,4 +6,4 @@ header('Access-Control-Max-Age: 1728000');
 header('Content-Length: 0');
 header('Content-Type: text/plain');
 //ABRIMOS CONEXIÓN
-$con=mysqli_connect('tourscg.com:3306','mendozaro25','Mendoz@123','bdAppTravelcg') or die('Error en la conexion servidor');
+$con=mysqli_connect('localhost','mendozaro25','Mendoz@123','bdAppTravelcg');

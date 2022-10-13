@@ -129,6 +129,14 @@ if($varsesionAdmin){
 					});
 					</script>
 
+					<?php
+					if (isset($_GET["error"])):
+					?>
+					<div class="text-danger"> <?= $_GET["error"] ?> </div>
+					<?php
+					endif;
+					?>
+
 					<div class="container-login100-form-btn m-t-32">
 						<input 
 						class="login100-form-btn"

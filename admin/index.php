@@ -253,11 +253,25 @@ if($varsesion == null || $varsesion = '' || $varsesionEmpleado){
 		</div>
 
 		<div class="row">
-			<div class="col-lg-5">
+			<div class="col-md-6 mb-30">
+				<div class="pd-20 card-box">
+					<div id="chart-container">cargando...</div>
+				</div>
+			</div>
+
+			<div class="col-md-6 mb-30">
+				<div class="pd-20 card-box">
+					<div id="chart-container2">cargando...</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-12">
 				<div class="card-box mb-30">
 					<div class="clearfix pd-20">
 						<div>
-							<h4 class="h4" style="font-family: system-ui; font-weight: 700; margin-left: 18.5%;">Imagenes de los Sitios Turisticos</h4>
+							<h4 class="h4" style="font-family: system-ui; font-weight: 700; margin-left: 33.5%;">Imagenes de los Sitios Turisticos</h4>
 						</div>
 					</div>
 
@@ -293,12 +307,6 @@ if($varsesion == null || $varsesion = '' || $varsesionEmpleado){
 							<span class="carousel-control-next-icon" aria-hidden="true" ></span> <span class="sr-only">Siguiente</span>
 						</a>
 					</div>
-				</div>
-			</div>
-
-			<div class="col-md-7 mb-30">
-				<div class="pd-20 card-box">
-					<div id="chart-container">cargando...</div>
 				</div>
 			</div>
         </div>
