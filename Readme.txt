@@ -1,6 +1,3 @@
-Thanks for downloading this template!
-
-Template Name: Knight
-Template URL: https://bootstrapmade.com/knight-free-bootstrap-theme/
-Author: BootstrapMade.com
-License: https://bootstrapmade.com/license/
+Developer: Juan Luis Mendoza Romero
+Made: Cesar Vallejo University - Perú
+Contact: jmendozaro73@gmail.com | instagram/@juanmendoza_25
